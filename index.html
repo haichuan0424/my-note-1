@@ -39,7 +39,11 @@
     
     function reset() {
         document.querySelector('#notepad').innerHTML = "Welcome to my notepad!";
-        fs.writeFile('/note', document.querySelector('#notepad').innerHTML);
+        fs.writeFile('/note', document.querySelector('#notepad').innerHTML, function(err){
+            if(err){
+                throw err;
+            }
+        });
     }
 
     function saveFile() {
